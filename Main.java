@@ -1,4 +1,4 @@
-package com.geo;
+package whatever;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -14,22 +14,22 @@ public class Main {
 	 */
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 		
-		//Load your JDBC driver:
+		//Charger le JDBC driver:
 		Class.forName("org.sqlite.JDBC");
 		
-		//Connect to the DB		
+		//Connecter à la BD		
 		Connection conn = DriverManager.getConnection("jdbc:sqlite:/path/to/your/db/demo.db");
                 
-        //Prepare the query:
+        //Préparation des requêtes
 		Statement stat = conn.createStatement();
-        ResultSet rs=stat.executeQuery("SELECT * from your_table");
+        ResultSet rs=stat.executeQuery("SELECT * from notre_table");
         
-        //Loop through results:
+        //Loop pour les résultats
         while(rs.next()){
-        	System.out.println(rs.getString("column_name"));
+        	System.out.println(rs.getString("nom_de_la_colonne"));
         }
         
-        //Close Connection:
+        //Terminer la connection
         conn.close();
 
 	}
