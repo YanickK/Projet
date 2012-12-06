@@ -16,12 +16,12 @@ package Service;
 
 import java.awt.*;
 
-public class Restaurant extends javax.swing.JFrame {
+public class RestaurantGUI extends javax.swing.JFrame {
 
     /**
      * Creates new form Restaurant
      */
-    public Restaurant() {
+    public RestaurantGUI() {
         initComponents();
     }
 
@@ -103,7 +103,7 @@ public class Restaurant extends javax.swing.JFrame {
         getContentPane().add(jLabel4);
         jLabel4.setBounds(40, 410, 80, 80);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Restaurant.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Service/Restaurant.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 0, 800, 790);
 
@@ -139,20 +139,20 @@ public class Restaurant extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Restaurant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RestaurantGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Restaurant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RestaurantGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Restaurant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RestaurantGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Restaurant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RestaurantGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Restaurant().setVisible(true);
+                new RestaurantGUI().setVisible(true);
             }
         });
     }
