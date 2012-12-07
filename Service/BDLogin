@@ -1,0 +1,46 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+public class BDLogin{
+  final String CHEMIN_POUR_ACCEDER_A_LA_BD="jdbc:sqlite:/chemin/du/fichier/SQLite";
+	private String userName="";
+	private String motDePasse="";
+	private boolean succes=false;
+	
+	public BDLogin(String userName,String motDePasse){
+		this.userName=userName;
+		this.motDePasse=motDePasse;
+	}
+	
+	public boolean DBConnect(){
+		//Charger le JDBC driver:
+		try{
+		Class.forName("org.sqlite.JDBC");
+
+		//Connecter à la BD
+		Connection conn = DriverManager.getConnection(CHEMIN_POUR_ACCEDER_A_LA_BD);
+                
+        //Préparation des requêtes
+		Statement stat = conn.createStatement();
+        ResultSet rs=stat.executeQuery("SELECT User_Name,MotDePasse from Employes");
+        
+        //Loop pour les résultats
+        while(rs.next()){
+        	if(userName.equals(rs.getString("User_Name"))&& motDePasse.equals(rs.getString("MotDePasse"))){
+        		succes=true;
+        		break;
+        	}else{
+        		//
+        	}
+         }
+        
+        //Terminer la connection
+        conn.close();
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+		return succes;
+	}
+}
