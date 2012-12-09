@@ -29,8 +29,7 @@ import javax.swing.JTextField;
 
 public class Login extends JFrame implements ActionListener{
 
-
-	final String CHEMIN_POUR_ACCEDER_A_LA_BD="jdbc:sqlite:./src/Service/Employes.sqlite";
+	final String DATABASEPATH="jdbc:sqlite:./src/Service/Employes.sqlite";
 
 	private JButton cmdConfirmer;
 	private JLabel lUsername;
@@ -110,10 +109,10 @@ public class Login extends JFrame implements ActionListener{
 			Class.forName("org.sqlite.JDBC");
 
 			//Connecter à la BD
-			Connection conn = DriverManager.getConnection(CHEMIN_POUR_ACCEDER_A_LA_BD);
+			Connection connEmploye = DriverManager.getConnection(DATABASEPATH);
 
 			//Préparation des requêtes
-			Statement stat = conn.createStatement();
+			Statement stat = connEmploye.createStatement();
 			ResultSet rs=stat.executeQuery("SELECT User_Name, MotDePasse from Employes");
 
 			//Loop pour les résultats
@@ -125,7 +124,7 @@ public class Login extends JFrame implements ActionListener{
 			}
 			
 			//Terminer la connection
-			conn.close();
+			connEmploye.close();
 		}catch (Exception e){
 			e.printStackTrace();
 		}
