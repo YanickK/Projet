@@ -1,5 +1,11 @@
 package Service;
 
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
@@ -7,109 +13,82 @@ import javax.swing.*;
 
 public class MenuGUI extends javax.swing.JFrame implements ActionListener {
 
+	final String DATABASEPATH="jdbc:sqlite:./src/Service/Repas.sqlite";
+	private JButton cmdAnnuler, cmdConfirmer, cmdRecommencer;
+	private String[] nomRepas = {"Entrées", "Plats principaux","Desserts"};
+	private JLabel[] lRepas = new JLabel[nomRepas.length];
 
+	//constructeur
 	public MenuGUI(JButton source) {
 		initComponents();
-		Connection conn;
-		try {
-			conn = DriverManager.getConnection("jdbc:sqlite:/path/to/your/db/demo.db");
-
-
-			//Préparation des requêtes
-			Statement stat = conn.createStatement();
-			ResultSet rs=stat.executeQuery("SELECT * from notre_table");
-
-			//Loop pour les résultats
-			while(rs.next()){
-				System.out.println(rs.getString("nom_de_la_colonne"));
-			}
-
-			//Terminer la connection
-			conn.close();		} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 	}
 
 	private void initComponents() {
-
-		cmdRecommencer = new JButton();
-		cmdConfimer = new JButton();
-		cmdAnnuler = new JButton();
-		jLabel1 = new JLabel();
-		jLabel2 = new JLabel();
-		jLabel3 = new JLabel();
-		jLabel5 = new JLabel();
-		jButton1 = new JButton();
-
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		setUndecorated(true);
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		int screenWidth = screenSize.width;
+		int screenHeight = screenSize.height;
+		setBounds(0,0,screenWidth, screenHeight);
 
-		cmdRecommencer.setText("Recommencer");
-
-		cmdConfimer.setText("Confirmer");
-
-		cmdAnnuler.setText("Annuler");
-
-		jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-		jLabel1.setText("Entrées");
-
-		jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-		jLabel2.setText("Plats");
-
-		jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-		jLabel3.setText("Desserts");
-
-		jLabel5.setText("qtéEntré1");
-
-		jButton1.setText("Entrée 1");
-
-		GroupLayout layout = new GroupLayout(getContentPane());
+		GridBagConstraints gridBagConstraints = new GridBagConstraints();
+		GridBagLayout layout = new GridBagLayout();
+		layout.columnWidths = new int[] {screenWidth/4, screenWidth/4, screenWidth/4, screenWidth/4};
+		
+		//à remplacer. Il faut trouver à l'avance le nombre d'items du menu (le plus grand de Entrées, Plat principal et Dessert)
+		//pour construire ce tableau
+		
+		layout.rowHeights = new int[] {screenHeight};
 		getContentPane().setLayout(layout);
-		layout.setHorizontalGroup(
-				layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-						.addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(cmdRecommencer)
-						.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-						.addComponent(cmdConfimer)
-						.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-						.addComponent(cmdAnnuler)
-						.addContainerGap())
-						.addGroup(layout.createSequentialGroup()
-								.addGap(38, 38, 38)
-								.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-										.addGroup(layout.createSequentialGroup()
-												.addComponent(jButton1)
-												.addGap(44, 44, 44)
-												.addComponent(jLabel5)
-												.addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-												.addGroup(layout.createSequentialGroup()
-														.addComponent(jLabel1)
-														.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 199, Short.MAX_VALUE)
-														.addComponent(jLabel2)
-														.addGap(249, 249, 249)
-														.addComponent(jLabel3)
-														.addGap(194, 194, 194))))
-				);
-		layout.setVerticalGroup(
-				layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-						.addContainerGap()
-						.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-								.addComponent(jLabel1)
-								.addComponent(jLabel2)
-								.addComponent(jLabel3))
-								.addGap(24, 24, 24)
-								.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-										.addComponent(jLabel5)
-										.addComponent(jButton1))
-										.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 324, Short.MAX_VALUE)
-										.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-												.addComponent(cmdRecommencer)
-												.addComponent(cmdConfimer)
-												.addComponent(cmdAnnuler))
-												.addContainerGap())
-				);
+
+
+		//libellés pour identifier les convives
+		gridBagConstraints.gridy=0;
+		for (int i = 0; i<lRepas.length; i++){
+			lRepas[i]= new JLabel(nomRepas[i]);
+			lRepas[i].setFont(new java.awt.Font("Tahoma",0,14));
+			gridBagConstraints.gridx=i;
+			getContentPane().add(lRepas[i],gridBagConstraints);
+		}
+
+
+		Connection connRepas;
+		try {
+			connRepas = DriverManager.getConnection(DATABASEPATH);
+			Statement stat = connRepas.createStatement();
+
+			//boucle pour les entrees
+			ResultSet rs=stat.executeQuery("SELECT * from Repas WHERE Menu = 'Entrée'");
+			while(rs.next()){
+				
+				//ici, on pourra instancier chacun des items du menu
+				System.out.println(rs.getString("Nom_Repas"));
+			}
+
+			connRepas.close();		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+
+
+
+
+
+
+
+
+
+
+		cmdRecommencer = new JButton("Recommencer");
+		cmdConfirmer = new JButton("Confirmer");
+		cmdAnnuler = new JButton("Annuler");
+
+		cmdAnnuler.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				annuler();
+			}
+		});
 
 		pack();
 	}
@@ -133,17 +112,18 @@ public class MenuGUI extends javax.swing.JFrame implements ActionListener {
 		} catch (javax.swing.UnsupportedLookAndFeelException ex) {
 			java.util.logging.Logger.getLogger(MenuGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 		}
+		java.awt.EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				new MenuGUI(new JButton()).setVisible(true);
+			}
+		});
 	}
 
-	private JButton cmdAnnuler;
-	private JButton cmdConfimer;
-	private JButton cmdRecommencer;
-	private JButton jButton1;
-	private JLabel jLabel1;
-	private JLabel jLabel2;
-	private JLabel jLabel3;
-	private JLabel jLabel5;
-
+	//bouton pour revenir au menu précédent
+	public void annuler(){
+		this.setVisible(false);
+	}
+	
 	public void actionPerformed(ActionEvent e) {
 		Object source = e.getSource();
 

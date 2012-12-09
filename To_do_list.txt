@@ -23,18 +23,17 @@ RestaurantGUI.java:
 
 ServiceGUI.java:
 -Changer la couleur de la table lorsque la facture est imprimée
--appeler un écran menu lorsqu'on clique sur une case
 -Afficher le texte d'une couleur différente lorsque la commande a été envoyée
 	aux cuisines à l'aide du bouton valider.
 -Generer un objet de type Facture lorsqu'on appuie sur le bouton facture
 
 
 MenuGUI.java:
--refactorer tout le code pour qu'il soit lisible
 -Afficher la liste des repas offerts en fonction de leur type (entrée, principal, dessert)
+	-j'ai besoin d'une façon d'avoir le nombre de plats dans un menu
+	 en fonction de son type (entrée, plat principal, dessert) pour continuer
 -Incrémenter la quantité lors de chaque clic
 -Ajouter une fonction qui retourne un objet de type RepasConvive à ServiceGUI
--implémenter le plein écran
 -(...)
 
 

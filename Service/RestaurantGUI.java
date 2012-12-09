@@ -1,11 +1,3 @@
-/**
- * Commentaires de Maxime:
- * 
- * Normalement, RestaurantGUI ne devrait pas être appelé directement.
- * Je n'ai pas encore enlevé la fonction qui override run() pour des fins de testing uniquement.
- * Elle devra être enlevée plus tard.
- */
-
 package Service;
 
 
@@ -17,9 +9,7 @@ public class RestaurantGUI extends javax.swing.JFrame {
     ServiceGUI table2;
     ServiceGUI table3;
     ServiceGUI table4;
-    /**
-     * Creates new form Restaurant
-     */
+
     public RestaurantGUI() {
         initComponents();
         table1 = new ServiceGUI();
@@ -186,11 +176,6 @@ public class RestaurantGUI extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(RestaurantGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
 
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new RestaurantGUI().setVisible(true);
-            }
-        });
     }
     
     private javax.swing.JButton cmdTable1;
