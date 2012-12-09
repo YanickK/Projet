@@ -3,13 +3,12 @@ package Service;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
-
 import javax.swing.*;
 
 public class MenuGUI extends javax.swing.JFrame implements ActionListener {
 
 
-	public MenuGUI() {
+	public MenuGUI(JButton source) {
 		initComponents();
 		Connection conn;
 		try {
@@ -134,12 +133,6 @@ public class MenuGUI extends javax.swing.JFrame implements ActionListener {
 		} catch (javax.swing.UnsupportedLookAndFeelException ex) {
 			java.util.logging.Logger.getLogger(MenuGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 		}
-
-		java.awt.EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				new MenuGUI().setVisible(true);
-			}
-		});
 	}
 
 	private JButton cmdAnnuler;
