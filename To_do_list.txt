@@ -1,0 +1,52 @@
+To do list:
+
+(les items suivis d'une étoile (*) sont moins importants, 
+on verra si on a le temps à la fin
+
+
+Login.java:
+-Créer un objet Serveur qui correspond au username (*)
+
+
+RestaurantGUI.java:
+-refactorer tout le code pour qu'il soit lisible
+-ajouter un bouton "logout" lorsque l'employé veut quitter
+-changer les couleurs des tables
+	-blanc lorsque la table est libre (par défaut)
+	-vert lorsqu'elle est gérée par un autre employé
+	-rouge lorsqu'elle est gérée par l'employé lui-même
+-clarifier la légende pour refléter ces choix de couleur
+-Limiter l'accès aux tables (à l'aide de méthode Synchronized) (*)
+-Changer la couleur de la table lorqu'un employé la prend en charge
+-implémenter le plein écran
+
+
+ServiceGUI.java:
+-Changer la couleur de la table lorsque la facture est imprimée
+-appeler un écran menu lorsqu'on clique sur une case
+-Afficher le texte d'une couleur différente lorsque la commande a été envoyée
+	aux cuisines à l'aide du bouton valider.
+-Generer un objet de type Facture lorsqu'on appuie sur le bouton facture
+
+
+MenuGUI.java:
+-refactorer tout le code pour qu'il soit lisible
+-Afficher la liste des repas offerts en fonction de leur type (entrée, principal, dessert)
+-Incrémenter la quantité lors de chaque clic
+-Ajouter une fonction qui retourne un objet de type RepasConvive à ServiceGUI
+-implémenter le plein écran
+-(...)
+
+
+CuisineGUI.java:
+-refactorer tout le code pour qu'il soit lisible
+-changer le constructeur pour qu'il reflète les items à cuisiner(*)
+-créer une méthode pour que le cuisinier indique qu'il a terminé de cuisiner un plat (*)
+-créer une méthode qui peut être appelée par ServiceGUI
+	qui permet d'ajouter des plats à cuisiner(*)
+-Ajouter un chronomètre qui indique l'heure d'arrivée des commandes(*)
+-implémenter le plein écran (*)
+
+
+Serveur.java:
+-implémenter les serveurs qui fonctionnent comme des Threads (*)
