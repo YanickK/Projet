@@ -35,8 +35,9 @@ public class MenuGUI extends javax.swing.JFrame implements ActionListener {
 		GridBagLayout layout = new GridBagLayout();
 		layout.columnWidths = new int[] {screenWidth/4, screenWidth/4, screenWidth/4, screenWidth/4};
 		
-		//à remplacer. Il faut trouver à l'avance le nombre d'items du menu (le plus grand de Entrées, Plat principal et Dessert)
-		//pour construire ce tableau
+		//Max, les 2 lignes ci-dessous devraient te trouver le nb max de plats tel que demandé
+		NbMaxMenu monMenu = new NbMaxMenu(DATABASEPATH);
+		public int monMenu.comparerMenu();
 		
 		layout.rowHeights = new int[] {screenHeight};
 		getContentPane().setLayout(layout);
