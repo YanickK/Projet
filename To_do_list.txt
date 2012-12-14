@@ -5,7 +5,6 @@ on verra si on a le temps � la fin
 
 
 Login.java:
--Cr�er un objet Serveur qui correspond au username (*)
 
 
 RestaurantGUI.java:
