@@ -22,9 +22,9 @@ RestaurantGUI.java:
 
 
 ServiceGUI.java:
--Changer la couleur de la table lorsque la facture est imprim�e
+-Changer la couleur de la table lorsque la facture est imprim�e (fait)
 -Afficher le texte d'une couleur diff�rente lorsque la commande a �t� envoy�e
-	aux cuisines � l'aide du bouton valider.
+	aux cuisines � l'aide du bouton valider. (fait)
 -Generer un objet de type Facture lorsqu'on appuie sur le bouton facture
 
 
