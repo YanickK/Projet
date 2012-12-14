@@ -1,51 +1,51 @@
 To do list:
 
-(les items suivis d'une étoile (*) sont moins importants, 
-on verra si on a le temps à la fin
+(les items suivis d'une ï¿½toile (*) sont moins importants, 
+on verra si on a le temps ï¿½ la fin
 
 
 Login.java:
--Créer un objet Serveur qui correspond au username (*)
+-Crï¿½er un objet Serveur qui correspond au username (*)
 
 
 RestaurantGUI.java:
--refactorer tout le code pour qu'il soit lisible
--ajouter un bouton "logout" lorsque l'employé veut quitter
--changer les couleurs des tables
-	-blanc lorsque la table est libre (par défaut)
-	-vert lorsqu'elle est gérée par un autre employé
-	-rouge lorsqu'elle est gérée par l'employé lui-même
--clarifier la légende pour refléter ces choix de couleur
--Limiter l'accès aux tables (à l'aide de méthode Synchronized) (*)
--Changer la couleur de la table lorqu'un employé la prend en charge
--implémenter le plein écran
+-refactorer tout le code pour qu'il soit lisible (fait)
+-ajouter un bouton "logout" lorsque l'employï¿½ veut quitter (fait)
+-changer les couleurs des tables (fait)
+	-blanc lorsque la table est libre (par dï¿½faut)
+	-vert lorsqu'elle est gï¿½rï¿½e par un autre employï¿½
+	-rouge lorsqu'elle est gï¿½rï¿½e par l'employï¿½ lui-mï¿½me
+-clarifier la lï¿½gende pour reflï¿½ter ces choix de couleur (fait)
+-Limiter l'accï¿½s aux tables (ï¿½ l'aide de mï¿½thode Synchronized) (*)
+-Changer la couleur de la table lorqu'un employï¿½ la prend en charge (fait)
+-implï¿½menter le plein ï¿½cran
 
 
 ServiceGUI.java:
--Changer la couleur de la table lorsque la facture est imprimée
--Afficher le texte d'une couleur différente lorsque la commande a été envoyée
-	aux cuisines à l'aide du bouton valider.
+-Changer la couleur de la table lorsque la facture est imprimï¿½e
+-Afficher le texte d'une couleur diffï¿½rente lorsque la commande a ï¿½tï¿½ envoyï¿½e
+	aux cuisines ï¿½ l'aide du bouton valider.
 -Generer un objet de type Facture lorsqu'on appuie sur le bouton facture
 
 
 MenuGUI.java:
--Afficher la liste des repas offerts en fonction de leur type (entrée, principal, dessert)
-	-j'ai besoin d'une façon d'avoir le nombre de plats dans un menu
-	 en fonction de son type (entrée, plat principal, dessert) pour continuer
--Incrémenter la quantité lors de chaque clic
--Ajouter une fonction qui retourne un objet de type RepasConvive à ServiceGUI
+-Afficher la liste des repas offerts en fonction de leur type (entrï¿½e, principal, dessert)
+	-j'ai besoin d'une faï¿½on d'avoir le nombre de plats dans un menu
+	 en fonction de son type (entrï¿½e, plat principal, dessert) pour continuer
+-Incrï¿½menter la quantitï¿½ lors de chaque clic
+-Ajouter une fonction qui retourne un objet de type RepasConvive ï¿½ ServiceGUI
 -(...)
 
 
 CuisineGUI.java:
 -refactorer tout le code pour qu'il soit lisible
--changer le constructeur pour qu'il reflète les items à cuisiner(*)
--créer une méthode pour que le cuisinier indique qu'il a terminé de cuisiner un plat (*)
--créer une méthode qui peut être appelée par ServiceGUI
-	qui permet d'ajouter des plats à cuisiner(*)
--Ajouter un chronomètre qui indique l'heure d'arrivée des commandes(*)
--implémenter le plein écran (*)
+-changer le constructeur pour qu'il reflï¿½te les items ï¿½ cuisiner(*)
+-crï¿½er une mï¿½thode pour que le cuisinier indique qu'il a terminï¿½ de cuisiner un plat (*)
+-crï¿½er une mï¿½thode qui peut ï¿½tre appelï¿½e par ServiceGUI
+	qui permet d'ajouter des plats ï¿½ cuisiner(*)
+-Ajouter un chronomï¿½tre qui indique l'heure d'arrivï¿½e des commandes(*)
+-implï¿½menter le plein ï¿½cran (*)
 
 
 Serveur.java:
--implémenter les serveurs qui fonctionnent comme des Threads (*)
+-implï¿½menter les serveurs qui fonctionnent comme des Threads (*)
