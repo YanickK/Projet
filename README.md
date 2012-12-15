@@ -3,6 +3,9 @@
 
 Application de restaurant en java
 
+1. Assurez-vous d'avoir la version la plus récente d'Eclipse.
+2. 
+
 Pour faire fonctionner Login.java, il faut ajouter un .jar au PATH comme suit:
 
 Project -> Properties -> Java Build Path -> Libraries -> Add JARs -> MYPATH/sqlite-jdbc-3.7.2
